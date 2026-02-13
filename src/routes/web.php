@@ -36,7 +36,7 @@ Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('p
 |--------------------------------------------------------------------------
 */
 Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address'])
-->name('purchase.address');
+    ->name('purchase.address');
 // ※ 設計書の i{tem_id} は typo → {item_id} に修正
 
 /*
@@ -51,7 +51,8 @@ Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
 | マイページ
 |--------------------------------------------------------------------------
 */
-Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
+Route::get('/mypage', [MypageController::class, 'index'])->middleware('auth')
+    ->name('mypage');
 // /mypage?page=buy  /mypage?page=sell → 同じ '/mypage' でOK（クエリパラメータで分岐）
 
 /*
@@ -59,4 +60,5 @@ Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
 | プロフィール編集（設定）
 |--------------------------------------------------------------------------
 */
-Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.profile');
+Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth')
+    ->name('mypage.profile');
