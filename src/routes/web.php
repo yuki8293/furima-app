@@ -6,6 +6,8 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +64,10 @@ Route::get('/mypage', [MypageController::class, 'index'])->middleware('auth')
 */
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth')
     ->name('mypage.profile');
+
+
+Route::post('/login', [LoginController::class, 'login'])
+    ->name('login');
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
