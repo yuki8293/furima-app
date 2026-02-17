@@ -18,7 +18,7 @@ class Item extends Model
         'status',
         'image',
     ];
-    
+
 
     public function user()
     {
