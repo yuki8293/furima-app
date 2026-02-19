@@ -5,7 +5,7 @@
 
 @foreach ($items as $item)
 <div>
-    <img src="{{ asset('storage/' . $item->image) }}" width="150">
+    <img src="{{ $item->image }}" width="150">
 
     <p>{{ $item->name }}</p>
 
