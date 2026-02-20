@@ -1,9 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>商品一覧</h2>
 
-@foreach ($items as $item)
+<div>
+    <a href="{{ route('items.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}">
+        おすすめ
+    </a>
+
+    @auth
+    <a href="{{ route('items.index', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}">
+        マイリスト
+    </a>
+    @endauth
+</div>
+
+@forelse ($items as $item)
 <div>
     <img src="{{ $item->image }}" width="150">
 
@@ -13,6 +24,8 @@
     <span style="color:red;">Sold</span>
     @endif
 </div>
-@endforeach
+@empty
+<p>該当する商品がありません。</p>
+@endforelse
 
 @endsection

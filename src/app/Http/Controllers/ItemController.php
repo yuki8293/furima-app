@@ -8,16 +8,32 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $query = Item::with('purchase');
+        $tab = $request->input('tab', 'recommend');
+        $keyword = $request->keyword;
 
-        // ログインしている場合は自分の商品を除外
-        if (Auth::check()) {
-            $query->where('user_id', '!=', Auth::id());
+        // まず空のクエリを用意
+        $query = Item::query();
+
+        if ($tab === 'mylist' && Auth::check()) {
+
+            $query->whereHas('likes', function ($q) {
+                $q->where('user_id', Auth::id());
+            });
+        } else {
+
+            if (Auth::check()) {
+                $query->where('user_id', '!=', Auth::id());
+            }
         }
 
-        $items = $query->get();
+        // 🔍 検索は共通でかける
+        if ($request->filled('keyword')) {
+            $query->where('name', 'like', "%{$keyword}%");
+        }
+
+        $items = $query->with('purchase')->get();
 
         return view('items.index', compact('items'));
     }

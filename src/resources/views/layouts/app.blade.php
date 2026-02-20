@@ -19,12 +19,23 @@
                 <a class="header__logo" href="/">
                     <img src="{{ asset('images/coachtech-logo.png') }}" alt="coachtech">
                 </a>
+
+                <form action="{{ route('items.index') }}" method="GET">
+                    <input type="text" name="keyword"
+                        placeholder="商品を検索"
+                        value="{{ request('keyword') }}">
+                    <button type="submit">検索</button>
+                </form>
+
                 <nav>
                     <ul class="header-nav">
 
                         @auth
                         <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
+                            <a class="header-nav__link"
+                                href="{{ route('mypage', ['keyword' => request('keyword')]) }}">
+                                マイページ
+                            </a>
                         </li>
                         <li class="header-nav__item">
                             <form action="/logout" method="post">

@@ -15,8 +15,7 @@ use App\Http\Controllers\RegisterController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [ItemController::class, 'index']);
-// /?tab=mylist → 同じ '/' でOK（クエリパラメータで分岐）
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
 /*
 |--------------------------------------------------------------------------
