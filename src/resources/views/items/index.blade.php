@@ -2,30 +2,32 @@
 
 @section('content')
 
-<div>
-    <a href="{{ route('items.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}">
+<div class="tabs">
+    <a class="tab tab-recommend" href="{{ route('items.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}">
         おすすめ
     </a>
 
     @auth
-    <a href="{{ route('items.index', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}">
+    <a class="tab tab-mylist" href="{{ route('items.index', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}">
         マイリスト
     </a>
     @endauth
 </div>
 
-@forelse ($items as $item)
-<div>
-    <img src="{{ $item->image }}" width="150">
+<div class="items">
+    @forelse ($items as $item)
 
-    <p>{{ $item->name }}</p>
+    <a href="{{ route('items.show', $item->id) }}" class="item">
+        <img src="{{ $item->image }}" width="150">
 
-    @if ($item->purchase)
-    <span style="color:red;">Sold</span>
-    @endif
+        <p class="item-name">{{ $item->name }}</p>
+
+        @if ($item->purchase)
+        <span class="sold">Sold</span>
+        @endif
+    </a>
+    @empty
+    <p>該当する商品がありません。</p>
+    @endforelse
 </div>
-@empty
-<p>該当する商品がありません。</p>
-@endforelse
-
 @endsection

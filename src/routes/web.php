@@ -64,9 +64,13 @@ Route::get('/mypage', [MypageController::class, 'index'])->middleware('auth')
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->middleware('auth')
     ->name('mypage.profile');
 
+Route::post('/mypage/profile', [ProfileController::class, 'update'])
+    ->middleware('auth')
+    ->name('mypage.profile.update');
 
 Route::post('/login', [LoginController::class, 'login'])
     ->name('login');
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
+
 Route::post('/register', [RegisterController::class, 'store']);

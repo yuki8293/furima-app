@@ -32,18 +32,25 @@
 
                         @auth
                         <li class="header-nav__item">
-                            <a class="header-nav__link"
-                                href="{{ route('mypage', ['keyword' => request('keyword')]) }}">
-                                マイページ
-                            </a>
-                        </li>
-                        <li class="header-nav__item">
                             <form action="/logout" method="post">
                                 @csrf
                                 <button class="header-nav__button">ログアウト</button>
                             </form>
                         </li>
+
+                        <li class="header-nav__item">
+                            <a class="header-nav__link" href="{{ route('mypage') }}">
+                                マイページ
+                            </a>
+                        </li>
+
+                        <li class="header-nav__item">
+                            <a class="header-nav__link header-nav__sell" href="{{ route('sell.create') }}">
+                                出品
+                            </a>
+                        </li>
                         @endauth
+
                     </ul>
                 </nav>
             </div>

@@ -33,6 +33,6 @@ class RegisterController extends Controller
         Auth::login($user);
 
         // マイページにリダイレクト
-        return redirect()->route('mypage');
+        return redirect()->route('mypage.profile');
     }
 }
