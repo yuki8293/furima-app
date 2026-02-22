@@ -31,6 +31,10 @@ Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('items.show
 */
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->middleware('auth')->name('purchase.index');
 
+// 購入完了処理
+Route::post('/purchase/{item_id}/complete', [PurchaseController::class, 'complete'])
+    ->middleware('auth')
+    ->name('purchase.complete');
 /*
 |--------------------------------------------------------------------------
 | 送付先住所変更

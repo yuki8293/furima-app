@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\Purchase;
 
 class PurchaseController extends Controller
 {
@@ -32,5 +34,24 @@ class PurchaseController extends Controller
 
         // 更新後は購入画面に戻す
         return redirect()->route('purchase.index', $item_id);
+    }
+
+    public function complete(Request $request, $item_id)
+    {
+        $item = Item::findOrFail($item_id);
+
+        // 支払い方法を取得
+        $paymentMethod = $request->input('payment_method');
+
+        // 購入処理（簡易サンプル）
+        // ここで purchase テーブルに登録する想定
+        $item->purchase()->create([
+            'user_id' => Auth::id(),
+            'payment_method' => $paymentMethod,
+            'purchased_at' => now(),
+        ]);
+
+        // 一覧ページにリダイレクト
+        return redirect()->route('items.index')->with('success', '購入が完了しました！');
     }
 }

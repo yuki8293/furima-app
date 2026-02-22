@@ -1,0 +1,96 @@
+/* 全体レイアウト */
+.purchase-page {
+    display: flex;
+    gap: 30px;
+    /* 左右の余白 */
+    padding: 20px;
+}
+
+/* 左側：商品情報＋配送先＋支払い選択 */
+.purchase-left {
+    flex: 2;
+    /* 幅を広く */
+}
+
+/* 商品情報 */
+.purchase-item-image {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.purchase-item-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.purchase-item-price {
+    font-size: 1.2rem;
+    color: #ff4d6d;
+    margin-bottom: 20px;
+}
+
+/* 支払い方法セレクト */
+.payment-select {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+/* 配送先変更リンク */
+.address-change-btn {
+    display: block;
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* 右側：購入ボックス */
+.purchase-right {
+    flex: 1;
+    /* 左側より狭め */
+    display: flex;
+    justify-content: center;
+    /* 横中央寄せ */
+}
+
+/* 右側ボックスの枠 */
+.purchase-summary-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    background-color: #fff;
+}
+
+/* 各項目の行 */
+.summary-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ラベル */
+.summary-label {
+    font-weight: bold;
+}
+
+/* 値 */
+.summary-value {
+    text-align: right;
+}
+
+/* 購入ボタン */
+.purchase-btn-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.purchase-btn {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
