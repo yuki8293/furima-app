@@ -45,7 +45,7 @@
             <div class="form__error"> @error('building') {{ $message }} @enderror </div>
         </div>
 
-        <button type="submit" class="btn btn-submit">更新してマイページへ</button>
+        <button type="submit" class="btn btn-submit">更新する</button>
     </form>
 </div>
 @endsection

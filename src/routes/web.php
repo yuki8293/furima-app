@@ -29,15 +29,19 @@ Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('items.show
 | 商品購入
 |--------------------------------------------------------------------------
 */
-Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('purchase.index');
+Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->middleware('auth')->name('purchase.index');
 
 /*
 |--------------------------------------------------------------------------
 | 送付先住所変更
 |--------------------------------------------------------------------------
 */
-Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address'])
+Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address'])->middleware('auth')
     ->name('purchase.address');
+
+Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])
+    ->middleware('auth')
+    ->name('purchase.address.update');
 // ※ 設計書の i{tem_id} は typo → {item_id} に修正
 
 /*
