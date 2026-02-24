@@ -55,6 +55,7 @@ Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAd
 */
 Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
 
+Route::post('/sell', [SellController::class, 'store'])->middleware('auth')->name('sell.store');
 /*
 |--------------------------------------------------------------------------
 | マイページ

@@ -1,0 +1,26 @@
+.category-group {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.category-item {
+    cursor: pointer;
+}
+
+.category-item input {
+    display: none;
+}
+
+.category-item span {
+    display: block;
+    text-align: center;
+    border: 2px solid #ff5656;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+.category-item input:checked+span {
+    background: #ff5656;
+    color: white;
+}
