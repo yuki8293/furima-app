@@ -16,8 +16,14 @@ class ItemController extends Controller
         // まず空のクエリを用意
         $query = Item::query();
 
-        if ($tab === 'mylist' && Auth::check()) {
+        if ($tab === 'mylist') {
 
+            // 🔴 未ログインなら空を返す（ここが追加ポイント）
+            if (!Auth::check()) {
+                return view('items.index', ['items' => collect()]);
+            }
+
+            // ログインしている場合のみいいね商品を取得
             $query->whereHas('likes', function ($q) {
                 $q->where('user_id', Auth::id());
             });
@@ -40,6 +46,7 @@ class ItemController extends Controller
 
     public function show($item_id)
     {
+
         $item = Item::findOrFail($item_id);
         return view('items.show', compact('item'));
     }

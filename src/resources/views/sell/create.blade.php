@@ -44,9 +44,10 @@
                 <label>商品の状態</label>
                 <select name="status" class="sell-select">
                     <option value="">選択してください</option>
-                    <option value="new">新品</option>
+                    <option value="new">良好</option>
                     <option value="good">目立った傷や汚れなし</option>
                     <option value="used">やや傷や汚れあり</option>
+                    <option value="used">状態が悪い</option>
                 </select>
             </div>
         </div>
