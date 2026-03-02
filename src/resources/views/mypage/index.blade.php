@@ -1,10 +1,11 @@
 @extends('layouts.app')
 <!-- ここはマイページ・プロフィール画面のblade -->
-@section('content')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
+
+@section('content')
 
 <!-- 全体レイアウト用クラス名 -->
 <div class="mypage-container">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- 商品出品画面のblade -->
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sell.css') }}">
 @endsection

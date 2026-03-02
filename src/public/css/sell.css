@@ -1,26 +1,130 @@
+/* 出品画面のcss */
+
+/* ページ全体 */
+.sell-page {
+    max-width: 800px;/* 最大横幅を800pxに制限 */
+    margin: 60px auto;/* 上下余白＋中央寄せ */
+    padding: 0 20px;/* 左右に20pxの余白 */
+}
+
+/* タイトル */
+.sell-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+
+/* セクション */
+.sell-section {
+    margin-bottom: 50px;/* セクション同士の余白 */
+}
+
+/* セクションタイトルの装飾 */
+.sell-section-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;/* 下線との間隔 */
+    border-bottom: 1px solid #ddd;/* 薄い下線 */
+}
+
+/* フォームグループ */
+.sell-form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;/* 縦並び */
+}
+
+/* ラベルの装飾 */
+.sell-form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;/* 入力欄との間隔 */
+}
+
+/* 入力フォーム共通デザイン*/
+.sell-input,
+.sell-select,
+.sell-textarea {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+/* 商品説明の高さとリサイズ設定 */
+.sell-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* 入力欄をクリックしたときの見た目 */
+.sell-input:focus,
+.sell-select:focus,
+.sell-textarea:focus {
+    outline: none;
+    border-color: #e60023;
+    box-shadow: 0 0 0 2px rgba(230, 0, 35, 0.1);
+}
+
+/* 画像アップロード */
+.sell-image-upload {
+    border: 2px dashed #ccc;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.sell-image-input {
+    cursor: pointer;
+}
+
+/* カテゴリチェックボックス */
 .category-group {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .category-item {
-    cursor: pointer;
-}
-
-.category-item input {
-    display: none;
-}
-
-.category-item span {
-    display: block;
-    text-align: center;
-    border: 2px solid #ff5656;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
     border-radius: 20px;
-    padding: 8px;
+    background: #f3f3f3;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.category-item input:checked+span {
-    background: #ff5656;
+.category-item:hover {
+    background: #e6e6e6;
+}
+
+/* 出品ボタン */
+.sell-submit {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.sell-button {
+    background: #e60023;
     color: white;
+    font-size: 16px;
+    padding: 14px 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sell-button:hover {
+    opacity: 0.85;
+}
+
+/* 販売価格の上下矢印を消す */
+.sell-input[type="number"]::-webkit-inner-spin-button,
+.sell-input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
