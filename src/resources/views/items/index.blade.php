@@ -1,6 +1,11 @@
 @extends('layouts.app')
-
+<!-- こちら商品一覧画面のblade -->
 @section('content')
+
+@section('css')
+<!-- 商品一覧画面用のCSS -->
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
 
 <div class="tabs">
     <a class="tab tab-recommend" href="{{ route('items.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}">

@@ -1,0 +1,74 @@
+/* タブ(切り替えボタン)全体 */
+.tabs {
+    display: flex;/* おすすめ・マイリストを横並びにする */
+    gap: 20px;/* タブ同士の間に20pxのスキマをあける */
+    max-width: 1200px;/* 横幅の最大を1200pxまでに制限する */
+    margin: 30px auto;/* 上下に30px余白
+           autoで左右中央寄せ */
+    border-bottom: 1px solid #ddd;/* 下に薄いグレーの線を引く */
+    padding-bottom: 10px;/* 下に10px内側余白
+           線と文字がくっつかないようにする */
+}
+
+/* タブ */
+.tab {
+    text-decoration: none;/* リンクの下線を消す */
+    color: #555;/* 文字色を少し薄いグレーにする */
+    font-weight: bold;/* 文字を太くする */
+    padding-bottom: 5px;
+}
+
+.tab:hover {
+    color: #e60023;/* マウスを乗せたら文字色を赤にする */
+}
+
+/* 商品一覧グリッド */
+.items {
+    display: grid;/* 商品を棚のように並べる */
+    grid-template-columns: repeat(4, 1fr);/* 4列作る
+           1fr = 均等幅 */
+    gap: 30px;/* 商品カードの間を30pxあける */
+    max-width: 1200px;
+    margin: 40px auto;/* 上下40px余白
+           左右中央寄せ */
+}
+
+/* 商品カード */
+.item {
+    text-decoration: none;
+    color: black;
+    position: relative;/* この中にある.soldを
+           絶対配置できるようにするため */
+    transition: 0.2s;/* 変化を0.2秒でなめらかにする */
+}
+
+.item:hover {
+    transform: translateY(-5px);/* マウスを乗せると
+           上に5px浮き上がる */
+}
+
+/* 商品画像 */
+.item img {
+    width: 100%;/* 親要素いっぱいに広げる */
+    aspect-ratio: 1 / 1;/* 縦横比を1:1にする（正方形） */
+    object-fit: cover;/* 画像を切り取って枠いっぱいに表示 */
+    border-radius: 12px;/* 角を丸くする */
+}
+
+/* 商品名 */
+.item-name {
+    margin-top: 10px;/* 上に10px余白 */
+    font-size: 15px;
+}
+
+/* Soldラベル */
+.sold {
+    position: absolute;/* 親(.item)を基準に配置 */
+    top: 10px;
+    left: 10px;
+    background: #e60023;/* 背景色（赤） */
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+}
