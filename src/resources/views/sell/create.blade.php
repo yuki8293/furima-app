@@ -18,6 +18,9 @@
 
             <div class="sell-image-upload">
                 <input type="file" name="image" class="sell-image-input">
+
+                <!-- プレビュー表示用 -->
+                <img id="preview" style="max-width:200px; margin-top:10px; display:none;">
             </div>
         </div>
 
@@ -47,7 +50,7 @@
                     <option value="new">良好</option>
                     <option value="good">目立った傷や汚れなし</option>
                     <option value="used">やや傷や汚れあり</option>
-                    <option value="used">状態が悪い</option>
+                    <option value="bad">状態が悪い</option>
                 </select>
             </div>
         </div>
@@ -87,5 +90,22 @@
     </form>
 
 </div>
+
+<script>
+    document.querySelector('input[name="image"]').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const preview = document.getElementById('preview');
+            preview.src = event.target.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 
 @endsection
