@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papf+Q7NU1ZpoWl9C+EibBd50O0VfpLez2Uu7eBZdbGQy5h4JxJ+f3nOUGR+JZ33v2YbK2Z+8w3lX2bH2FgGKw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     @yield('css')
 </head>
 

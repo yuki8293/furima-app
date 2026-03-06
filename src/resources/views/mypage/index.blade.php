@@ -42,7 +42,8 @@
         @forelse ($sellItems as $item)
         <div class="mypage-item">
             <a href="{{ route('items.show', $item->id) }}">
-                <img src="{{ $item->image }}" alt="{{ $item->name }}" class="mypage-item-image">
+                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="mypage-item-image">
+                
                 <p class="mypage-item-name">{{ $item->name }}</p>
                 <p class="mypage-item-price">¥{{ number_format($item->price) }}</p>
                 @if ($item->purchase)

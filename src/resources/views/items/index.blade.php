@@ -23,8 +23,7 @@
     @forelse ($items as $item)
 
     <a href="{{ route('items.show', $item->id) }}" class="item">
-        <img src="{{ $item->image }}" width="150">
-
+        <img src="{{ Str::startsWith($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" width="150">
         <p class="item-name">{{ $item->name }}</p>
 
         @if ($item->purchase)
