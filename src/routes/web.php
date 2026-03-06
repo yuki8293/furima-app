@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 // authはログイン必須の意味
 
@@ -21,6 +22,11 @@ Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('items.show
 // いいね機能（ログインユーザーのみ実行可能）
 Route::post('/item/{item}/like', [LikeController::class, 'toggle'])->middleware('auth') // 未ログインはログイン画面へ
 ->name('items.like');
+
+// コメント投稿
+Route::post('/item/{item}/comment', [CommentController::class, 'store'])
+    ->middleware('auth')
+    ->name('comments.store');
 
 // 商品購入画面
 Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->middleware('auth')->name('purchase.index');

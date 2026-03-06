@@ -80,7 +80,7 @@
                     alt="出品者アイコン">
                 <span class="seller-name">{{ $item->user->name }}</span>
             </div>
-            
+
             @forelse($item->comments as $comment)
 
             <div class="comment">
@@ -99,16 +99,18 @@
         <div class="comment-form">
             <label for="comment">商品へのコメント</label>
 
-            <textarea
-                id="comment"
-                name="comment"
-                rows="3"
-                placeholder="コメントを入力してください">
-            </textarea>
+            <form action="{{ route('comments.store', $item->id) }}" method="POST">
+                @csrf
+                <textarea
+                    id="comment"
+                    name="comment"
+                    rows="3"
+                    placeholder="コメントを入力してください"></textarea>
 
-            <button class="submit-comment">
-                コメントを送信する
-            </button>
+                <button class="submit-comment">
+                    コメントを送信する
+                </button>
+            </form>
         </div>
 
     </div>
