@@ -1,0 +1,90 @@
+/* address.blade.php(送付先住所変更画面)のcss */
+
+/* ページ全体 */
+.address-change-container {
+    max-width: 600px;
+    /* 最大幅 */
+    margin: 40px auto;
+    /* 中央寄せ */
+    padding: 25px 20px;
+    /* 内側余白 */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトル */
+.address-change-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* 入力欄のラッパー */
+.address-change-field {
+    margin-bottom: 15px;
+}
+
+/* ラベル */
+.address-change-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 入力欄 */
+.address-change-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* 入力欄をクリックしたとき */
+.address-change-input:focus {
+    border-color: #F08080;
+    outline: none;
+    box-shadow: 0 0 3px #F08080;
+}
+
+/* ボタンラッパー */
+.address-change-action {
+    margin-top: 20px;
+}
+
+/* 送信ボタン */
+.address-change-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e60023;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* ボタンホバー */
+.address-change-submit-btn:hover {
+    background-color: #F08080;
+}
+
+/* モバイル用 */
+@media (max-width: 768px) {
+    .address-change-container {
+        padding: 20px 15px;
+    }
+
+    .address-change-title {
+        font-size: 20px;
+    }
+
+    .address-change-submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
