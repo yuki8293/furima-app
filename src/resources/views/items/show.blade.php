@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+<!-- 詳細画面のblade -->
+<!-- コントローラはitemController -->
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 @endsection
@@ -52,8 +53,9 @@
         @endif
 
         <!-- 商品説明 -->
+        <h3> 商品説明</h3>
         <p class="item-description">
-            {{ $item->description }}
+        {{ $item->description }}
         </p>
 
         <!-- 商品情報 -->

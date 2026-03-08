@@ -19,6 +19,13 @@
         <!-- アイコン画像を表示＆変更 -->
         <div class="profile-avatar-section">
             <img id="avatar-preview" class="profile-avatar" src="{{ auth()->user()->icon ? asset('storage/icons/' . auth()->user()->icon) : asset('images/default-avatar.png') }}" alt="">
+
+            <!-- 見た目のボタン -->
+            <label for="avatar-input" class="select-image-btn">
+                画像を選択する
+            </label>
+
+            <!-- 本当のファイル選択ボタンinput -->
             <input id="avatar-input" type="file" name="icon" class="profile-avatar-input">
         </div>
 

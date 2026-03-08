@@ -17,7 +17,7 @@ use App\Http\Controllers\CommentController;
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
 // 商品詳細画面
-Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('items.show');
+Route::get('/item/{item}', [ItemController::class, 'show'])->name('items.show');
 
 // いいね機能（ログインユーザーのみ実行可能）
 Route::post('/item/{item}/like', [LikeController::class, 'toggle'])->middleware('auth') // 未ログインはログイン画面へ

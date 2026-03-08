@@ -1,56 +1,85 @@
-/* profile.css */
+/* ===プロフィール編集画面のcss
+profile.blade.php=== */
+
+/* 画面全体のコンテナ */
 .profile-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 400px; /* 横幅を400pxに制限 */
+    margin: 0 auto; /* margin: 0 auto で画面中央に配置 */
+    padding: 20px; /* 内側に余白を作る */
 }
 
+/* タイトル */
 .profile-title {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: center; /* 文字を中央揃え */
+    margin-bottom: 20px; /* 下に余白を作る */
 }
 
+/* プロフィール画像エリア */
 .profile-avatar-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column; /* 縦方向に並べる */
+    align-items: center; /* 中央に配置 */
+    margin-bottom: 20px; /* 下に余白 */
 }
 
+/* プロフィール画像 */
 .profile-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #ccc;
+    width: 100px; /* 100pxの正方形 */
+    height: 100px; 
+    border-radius: 50%; /*border-radiusで丸いアイコン */
+    object-fit: cover; /* object-fitで画像の比率を保つ */
+    background-color: #ccc; /* 画像が無い場合の背景色 */
     margin-bottom: 10px;
 }
 
+/* 本物のファイルinputを隠す */
 .profile-avatar-input {
-    width: 150px;
+    display: none; /* デフォルトの「ファイルを選択」ボタンを非表示にする */
 }
 
+/* 画像選択ボタン */
+.select-image-btn {
+    display: inline-block; /* labelをボタン風にする */
+    margin-left: 20px;
+    padding: 8px 16px;
+    border: 2px solid #ff5555; /* 枠線を赤色 */
+    color: #ff5555; /* 文字色も赤 */
+    border-radius: 5px; /* 角を丸くする */
+    cursor: pointer; /* クリックできるようにカーソル変更 */
+    font-weight: bold;
+}
+
+/* ボタンにマウスを乗せたとき */
+.select-image-btn:hover {
+    background-color: #ff5555; /* 背景を赤 */
+    color: white; /* 文字は白 */
+}
+
+/* フォームの入力ブロック */
 .profile-form .form-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* ラベルと入力欄を縦並び */
     margin-bottom: 15px;
 }
 
+/* 入力欄 */
 .profile-form .form-input {
     padding: 8px;
     font-size: 16px;
 }
 
+/* 更新ボタン */
 .btn-submit {
-    width: 100%;
+    width: 100%; /* 横幅100%でフォームいっぱいにする */
     padding: 10px;
     font-size: 16px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
+    background-color: red; /* 赤背景 */
+    color: white; /* 文字は白 */
+    border: none; /* 枠線なし */
+    cursor: pointer; /* カーソルをポインター */
 }
 
+/* バリデーションエラーメッセージ */
 .form__error {
     color: red;
     font-size: 0.9rem;
