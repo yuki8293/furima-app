@@ -77,6 +77,13 @@
     /* いいねはクリック可能に見せる */
 }
 
+/* いいね、コメント共通 */
+.item-likes-comments img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
 /* いいねボタン内部 */
 .like-button {
     border: none;

@@ -10,6 +10,10 @@ class CommentController extends Controller
 {
     public function store(Request $request, $item)
     {
+        $request->validate([
+            'comment' => 'required|string|max:255',
+        ]);
+
         Comment::create([
             'user_id' => Auth::id(),
             'item_id' => $item,

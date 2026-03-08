@@ -34,12 +34,19 @@
             <form action="{{ route('items.like', $item->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="like-button">
-                    ♡ {{ $item->likes->count() }}
+                    <!-- いいね済みならピンク、未ならデフォルト -->
+                    @if($item->likes->contains('user_id', auth()->id()))
+                    <img src="{{ asset('images/heart-pink.png') }}" alt="いいね済み">
+                    @else
+                    <img src="{{ asset('images/heart-default.png') }}" alt="いいね">
+                    @endif
+                    {{ $item->likes->count() }}
                 </button>
             </form>
 
             <a href="#comments" class="comments">
-                💭 {{ $item->comments->count() }}
+                <img src="{{ asset('images/comment.png') }}" alt="コメント">
+                {{ $item->comments->count() }}
             </a>
         </div>
 
@@ -55,7 +62,7 @@
         <!-- 商品説明 -->
         <h3> 商品説明</h3>
         <p class="item-description">
-        {{ $item->description }}
+            {{ $item->description }}
         </p>
 
         <!-- 商品情報 -->
