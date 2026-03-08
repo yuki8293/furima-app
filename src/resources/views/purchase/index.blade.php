@@ -1,74 +1,79 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="{{ asset('css/common.css') }}">
+@section('css')
 <link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
+@endsection
+
 
 @section('content')
 
 <div class="purchase-page">
 
-    {{-- 左側：商品情報＋配送先＋支払い選択 --}}
+    {{-- 左側 --}}
     <div class="purchase-left">
 
         {{-- 商品情報 --}}
         <div class="item-info">
             <img src="{{ $item->image }}" class="purchase-item-image">
-            <h2 class="purchase-item-name">{{ $item->name }}</h2>
-            <p class="purchase-item-price">¥{{ number_format($item->price) }}</p>
+            <div class="item-text">
+                <h2 class="purchase-item-name">{{ $item->name }}</h2>
+                <p class="purchase-item-price">¥{{ number_format($item->price) }}</p>
+            </div>
         </div>
 
-        <form id="purchase-form" action="{{ route('purchase.complete', $item->id) }}" method="POST">
-            @csrf
-            
-            {{-- 支払い方法選択（左側でも確認用） --}}
-            <div class="payment">
-                <h3>支払い方法</h3>
-                <select name="payment_method" class="payment-select">
-                    <option value="">選択してください</option>
-                    <option value="convenience">コンビニ払い</option>
-                    <option value="card">カード払い</option>
-                </select>
-            </div>
+        {{-- 支払い方法 --}}
+        <div class="payment">
+            <h3>支払い方法</h3>
+            <select name="payment_method" class="payment-select">
+                <option value="">選択してください</option>
+                <option value="convenience">コンビニ払い</option>
+                <option value="card">カード払い</option>
+            </select>
+        </div>
 
-            {{-- 配送先 --}}
-            <div class="address">
+        {{-- 配送先 --}}
+        <div class="address">
+            <div class="address-header">
                 <h3>配送先</h3>
-                <p>
-                    〒{{ Auth::user()->postcode }}<br>
-                    {{ Auth::user()->address }}<br>
-                    {{ Auth::user()->building }}
-                </p>
                 <a href="{{ route('purchase.address', $item->id) }}" class="address-change-btn">変更する</a>
             </div>
+            <p>
+                〒{{ Auth::user()->postcode }}<br>
+                {{ Auth::user()->address }}<br>
+                {{ Auth::user()->building }}
+            </p>
+        </div>
 
     </div>
 
-    {{-- 右側：購入ボックス（商品代金・支払い方法・購入ボタン） --}}
+    {{-- 右側 --}}
     <div class="purchase-right">
 
-        <div class="purchase-summary-box">
+        <form id="purchase-form" action="{{ route('purchase.complete', $item->id) }}" method="POST">
+            @csrf
 
-            {{-- 商品代金 --}}
-            <div class="summary-box">
-                <div class="summary-label">商品代金</div>
-                <div class="summary-value">¥{{ number_format($item->price) }}</div>
-            </div>
+            <div class="purchase-summary-box">
 
-            {{-- 支払い方法 --}}
-            <div class="summary-box">
-                <div class="summary-label">支払い方法</div>
-                <div class="summary-value">
-                    <span id="selected-payment">未選択</span>
+                <div class="summary-box">
+                    <div class="summary-label">商品代金</div>
+                    <div class="summary-value">¥{{ number_format($item->price) }}</div>
                 </div>
+
+                <div class="summary-box">
+                    <div class="summary-label">支払い方法</div>
+                    <div class="summary-value">
+                        <span id="selected-payment">未選択</span>
+                    </div>
+                </div>
+
+                <div class="purchase-btn-wrapper">
+                    <button type="submit" class="purchase-btn">購入する</button>
+                </div>
+
             </div>
 
-            {{-- 購入ボタン --}}
-            <div class="purchase-btn-wrapper">
-                <button type="submit" class="purchase-btn">購入する</button>
-            </div>
-
-        </div>
         </form>
+
     </div>
 
 </div>

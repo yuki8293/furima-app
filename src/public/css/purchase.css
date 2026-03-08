@@ -2,8 +2,12 @@
 .purchase-page {
     display: flex;
     gap: 30px;
-    /* 左右の余白 */
     padding: 20px;
+
+    max-width: 1000px;
+    /* 横幅制限 */
+    margin: 40px auto;
+    /* 中央寄せ */
 }
 
 /* 左側：商品情報＋配送先＋支払い選択 */
@@ -16,6 +20,13 @@
 .purchase-item-image {
     width: 150px;
     margin-bottom: 15px;
+}
+
+/* 商品情報（画像＋テキスト） */
+.item-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .purchase-item-name {
@@ -37,10 +48,18 @@
 
 /* 配送先変更リンク */
 .address-change-btn {
-    display: block;
-    margin-top: 5px;
     color: #007bff;
     text-decoration: underline;
+}
+
+/* 配送先タイトルと変更ボタンを横並び */
+.address-header {
+    display: flex;
+    /* 横並び */
+    justify-content: space-between;
+    /* 左右に配置 */
+    align-items: center;
+    /* 縦位置を揃える */
 }
 
 /* 右側：購入ボックス */
