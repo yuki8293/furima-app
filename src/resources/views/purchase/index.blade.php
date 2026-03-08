@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="purchase-page">
+<div class="purchase-container">
 
     {{-- 左側 --}}
     <div class="purchase-left">

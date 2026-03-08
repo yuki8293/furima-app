@@ -15,6 +15,8 @@
     width: 420px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
 }
 
 /* ===== 右側（情報） ===== */
@@ -215,4 +217,23 @@
 
 .submit-comment:hover {
     background-color: #000;
+}
+
+/* PC用 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .item-detail-container {
+        max-width: 1100px;
+        gap: 80px;
+        padding: 0 30px;
+    }
+}
+
+/* タブレット用 */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .item-detail-container {
+        max-width: 350px;
+        gap: 20px;
+        padding: 0 15px;
+        flex-direction: column;
+    }
 }

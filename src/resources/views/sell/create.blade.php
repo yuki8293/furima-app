@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="sell-page">
+<div class="item-form-container">
 
     <h2 class="sell-title">商品の出品</h2>
 

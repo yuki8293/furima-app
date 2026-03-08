@@ -1,7 +1,7 @@
 /* 出品画面のcss */
 
 /* ページ全体 */
-.sell-page {
+.item-form-container {
     max-width: 800px;/* 最大横幅を800pxに制限 */
     margin: 60px auto;/* 上下余白＋中央寄せ */
     padding: 0 20px;/* 左右に20pxの余白 */
@@ -127,4 +127,20 @@
 .sell-input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* PC用 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .item-form-container {
+        max-width: 900px;
+        padding: 50px;
+    }
+}
+
+/* タブレット用 */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .item-form-container {
+        max-width: 400px;
+        padding: 20px;
+    }
 }

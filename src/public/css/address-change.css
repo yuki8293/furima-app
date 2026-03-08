@@ -88,3 +88,21 @@
         padding: 10px;
     }
 }
+
+/* PC用 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .address-change-container {
+        max-width: 600px;
+        padding: 40px 25px;
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .address-change-container {
+        max-width: 350px;
+        padding: 20px 15px;
+        background-color: rgba(0, 0, 255, 0.2);
+    }
+}
+

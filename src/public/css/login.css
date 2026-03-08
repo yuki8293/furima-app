@@ -58,3 +58,19 @@
     margin-top: 20px;
     text-align: center;
 }
+
+/* PC用 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .login-form__content {
+        max-width: 700px;
+        padding: 50px 30px;
+    }
+}
+
+/* タブレット用 */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .login-form__content {
+        max-width: 350px;
+        padding: 20px 15px;
+    }
+}

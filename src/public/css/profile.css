@@ -85,3 +85,19 @@ profile.blade.php=== */
     font-size: 0.9rem;
     margin-top: 4px;
 }
+
+/* PC用 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .profile-container {
+        max-width: 900px;
+        padding: 50px;
+    }
+}
+
+/* タブレット用 */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .profile-container {
+        max-width: 400px;
+        padding: 20px;
+    }
+}

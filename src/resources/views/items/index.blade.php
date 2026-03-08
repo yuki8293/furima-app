@@ -19,7 +19,7 @@
     @endauth
 </div>
 
-<div class="items">
+<div class="items-list-container">
     @forelse ($items as $item)
 
     <a href="{{ route('items.show', $item->id) }}" class="item">
