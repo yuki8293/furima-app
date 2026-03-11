@@ -34,7 +34,7 @@
 }
 
 /* 商品カード */
-.items-list-container {
+.items {
     text-decoration: none;
     color: black;
     position: relative;/* この中にある.soldを
