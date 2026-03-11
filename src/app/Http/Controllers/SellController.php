@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Category;
+use App\Http\Requests\ExhibitionRequest;
 
 class SellController extends Controller
 {
@@ -15,7 +16,7 @@ class SellController extends Controller
         return view('sell.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
         // ① 画像保存
         $imagePath = $request->file('image')->store('items', 'public');

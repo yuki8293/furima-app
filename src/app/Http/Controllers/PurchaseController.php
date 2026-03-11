@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Purchase;
+use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\AddressRequest;
 
 class PurchaseController extends Controller
 {
@@ -24,7 +25,7 @@ class PurchaseController extends Controller
         return view('purchase.address', compact('item', 'user'));
     }
 
-    public function updateAddress(Request $request, $item_id)
+    public function updateAddress(AddressRequest $request, $item_id)
     {
         $user = auth()->user();
         $user->postcode = $request->postcode;
@@ -36,7 +37,7 @@ class PurchaseController extends Controller
         return redirect()->route('purchase.index', $item_id);
     }
 
-    public function complete(Request $request, $item_id)
+    public function complete(PurchaseRequest $request, $item_id)
     {
         $item = Item::findOrFail($item_id);
 
