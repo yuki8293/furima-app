@@ -86,14 +86,18 @@
                 <img
                     src="{{ $item->user->icon ? asset('storage/icons/' . $item->user->icon) : asset('images/default-avatar.png') }}"
                     class="seller-icon"
-                    alt="出品者アイコン">
+                    alt="">
                 <span class="seller-name">{{ $item->user->name }}</span>
             </div>
 
             @forelse($item->comments as $comment)
 
             <div class="comment">
-                <img src="{{ $comment->user->icon ?? asset('images/default-avatar.png') }}" class="comment-icon">
+                <img
+                    src="{{ $comment->user->icon 
+    ? asset('storage/icons/' . $comment->user->icon) 
+    : asset('images/default-avatar.png') }}"
+                    class="comment-icon">
                 <span class="comment-user">{{ $comment->user->name }}</span>
                 <p class="comment-text">{{ $comment->comment }}</p>
             </div>
