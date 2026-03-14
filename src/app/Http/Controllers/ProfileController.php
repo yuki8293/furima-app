@@ -16,6 +16,7 @@ class ProfileController extends Controller
     // プロフィール更新処理(route→POST/mypage/profile)
     public function update(ProfileRequest $request)
     {
+
         $user = auth()->user();
         $validated = $request->validated();
 

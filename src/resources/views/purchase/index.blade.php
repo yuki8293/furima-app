@@ -14,7 +14,7 @@
 
         {{-- 商品情報 --}}
         <div class="item-info">
-            <img src="{{ $item->image }}" class="purchase-item-image">
+            <img src="{{ asset('storage/' . $item->image) }}" class="purchase-item-image">
             <div class="item-text">
                 <h2 class="purchase-item-name">{{ $item->name }}</h2>
                 <p class="purchase-item-price">¥{{ number_format($item->price) }}</p>
@@ -65,6 +65,9 @@
                         <span id="selected-payment">未選択</span>
                     </div>
                 </div>
+
+                <!-- hidden input で配送先情報をフォームに含める -->
+                <input type="hidden" name="address" value="〒{{ Auth::user()->postcode }} {{ Auth::user()->address }} {{ Auth::user()->building }}">
 
                 <div class="purchase-btn-wrapper">
                     <button type="submit" class="purchase-btn">購入する</button>

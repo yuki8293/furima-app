@@ -29,12 +29,10 @@
             <input type="text" id="building" name="building" value="{{ $user->building }}" class="address-change-input">
         </div>
 
-        <form action="{{ route('purchase.address.update', $item->id) }}" method="POST">
-            @csrf
-            <div class="address-change-action">
-                <button type="submit" class="address-change-submit-btn">更新する</button>
-            </div>
+        <div class="address-change-action">
+            <button type="submit" class="address-change-submit-btn">更新する</button>
+        </div>
 
-        </form>
+    </form>
 </div>
 @endsection

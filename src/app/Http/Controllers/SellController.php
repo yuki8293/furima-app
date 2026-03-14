@@ -18,8 +18,19 @@ class SellController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
+
         // ① 画像保存
         $imagePath = $request->file('image')->store('items', 'public');
+
+
+        // ステータスを日本語に変換
+        $statusMap = [
+            'new'  => '良好',
+            'good' => '目立った傷や汚れなし',
+            'used' => 'やや傷や汚れあり',
+            'bad'  => '状態が悪い',
+        ];
+        $status = $statusMap[$request->status] ?? '未設定';
 
         // ② 商品作成
         $item = Item::create([
@@ -28,7 +39,7 @@ class SellController extends Controller
             'brand_name' => $request->brand_name,
             'description' => $request->description,
             'price' => $request->price,
-            'status' => $request->status,
+            'status' => $status,
             'image' => $imagePath,
         ]);
 
