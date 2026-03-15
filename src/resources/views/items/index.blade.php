@@ -23,12 +23,17 @@
     @forelse ($items as $item)
 
     <a href="{{ route('items.show', $item->id) }}" class="item">
-        <img src="{{ Str::startsWith($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" width="150">
+
+        <div class="item-image-wrapper">
+            <img src="{{ Str::startsWith($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" width="150">
+
+            @if ($item->purchase)
+            <span class="sold">Sold</span>
+            @endif
+        </div>
+
         <p class="item-name">{{ $item->name }}</p>
 
-        @if ($item->purchase)
-        <span class="sold">Sold</span>
-        @endif
     </a>
     @empty
     <p>該当する商品がありません。</p>
