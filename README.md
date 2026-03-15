@@ -1,6 +1,7 @@
-# お問い合わせフォーム
+# Furima-app
 
-◯◯◯◯◯ ◯◯◯◯ ◯◯◯◯
+フリマアプリを模したWebアプリケーションです。
+ユーザー登録、商品出品、購入、コメント、いいね機能などを実装しています。
 
 ## 環境構築
 
@@ -55,6 +56,17 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+### ストレージリンク
+
+```
+php artisan storage:link
+```
+
+## テスト実行
+
+```
+php artisan test
+```
 ## 使用技術（実行環境）
 
 フレームワーク：Laravel 8.x
@@ -72,7 +84,5 @@ Webサーバー：Nginx 1.21.1
 ## URL
 
 アプリケーション：http://localhost
-
-管理画面：◯◯◯◯◯ ◯◯◯◯ ◯◯◯◯
 
 phpMyAdmin：http://localhost:8080
