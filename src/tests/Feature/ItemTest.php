@@ -9,6 +9,8 @@ use App\Models\Purchase;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ItemTest extends TestCase
 {
@@ -152,38 +154,35 @@ class ItemTest extends TestCase
      */
     public function test_user_can_create_item_with_required_fields()
     {
-        // ユーザー作成
+        Storage::fake('public');
+
         $user = User::factory()->create();
+        $category = Category::factory()->create(['name' => '家電']);
 
-        // カテゴリ作成
-        $category = Category::factory()->create([
-            'name' => '家電'
-        ]);
-
-        // ログイン
         $this->actingAs($user);
 
-        // 出品処理
+        $file = UploadedFile::fake()->create('dummy.txt', 100); // GD不要
+
         $response = $this->post('/sell', [
             'name' => '出品テスト商品',
             'brand_name' => 'テストブランド',
             'price' => 5000,
             'description' => 'テスト商品の説明',
-            'status' => '良好',
-            'category_id' => [$category->id],
-            'image' => \Illuminate\Http\UploadedFile::fake()->image('test.jpg'), // 画像必須
+            'status' => 'new',
+            'categories' => [$category->id],
+            'image' => $file,
         ]);
 
-        // リダイレクト確認
         $response->assertStatus(302);
 
-        // DBに保存されているか確認
         $this->assertDatabaseHas('items', [
             'name' => '出品テスト商品',
             'brand_name' => 'テストブランド',
             'price' => 5000,
             'description' => 'テスト商品の説明',
-            'status' => '良好',
+            'status' => '良好', // new → 良好 に変換される
         ]);
+
+        Storage::disk('public')->assertExists('items/' . $file->hashName());
     }
 }

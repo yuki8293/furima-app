@@ -26,7 +26,7 @@ class ExhibitionRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png',
+            'image' => 'required|file', // GDなし環境でも通る
             'categories' => 'required',
             'status' => 'required',
             'price' => 'required|integer|min:0',

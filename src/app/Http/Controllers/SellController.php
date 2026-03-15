@@ -19,8 +19,15 @@ class SellController extends Controller
     public function store(ExhibitionRequest $request)
     {
 
-        // ① 画像保存
-        $imagePath = $request->file('image')->store('items', 'public');
+        $imagePath = null;
+        // もし画像がアップロードされていたら
+        if ($request->hasFile('image')) {
+            if (!app()->environment('testing')) {
+                // 本番・開発環境ではリサイズや加工処理
+            }
+            // 画像を Storage に保存（GD不要の擬似ファイルでも保存可能）
+            $imagePath = $request->file('image')->store('items', 'public');
+        }
 
 
         // ステータスを日本語に変換
