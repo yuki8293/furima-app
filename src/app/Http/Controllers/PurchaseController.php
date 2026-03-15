@@ -44,13 +44,19 @@ class PurchaseController extends Controller
         // 支払い方法を取得
         $paymentMethod = $request->input('payment_method');
 
+        $user = Auth::user();
         // 購入処理（簡易サンプル）
         // ここで purchase テーブルに登録する想定
         $item->purchase()->create([
-            'user_id' => Auth::id(),
+            'user_id' => $user->id,
             'payment_method' => $paymentMethod,
-            'purchased_at' => now(),
+            'postcode' => $user->postcode,
+            'address' => $user->address,
+            'building' => $user->building,
         ]);
+
+        $item->status = 'sold';
+        $item->save();
 
         // 一覧ページにリダイレクト
         return redirect()->route('items.index')->with('success', '購入が完了しました！');

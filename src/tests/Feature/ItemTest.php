@@ -144,4 +144,46 @@ class ItemTest extends TestCase
         $response->assertSee('家電');
         $response->assertSee('ゲーム');
     }
+
+    /**
+     * ユーザーが商品出品画面で必要な情報を入力すると、
+     * 商品情報（カテゴリ、商品の状態、商品名、ブランド名、商品の説明、販売価格）
+     * が正しく保存されることを確認する
+     */
+    public function test_user_can_create_item_with_required_fields()
+    {
+        // ユーザー作成
+        $user = User::factory()->create();
+
+        // カテゴリ作成
+        $category = Category::factory()->create([
+            'name' => '家電'
+        ]);
+
+        // ログイン
+        $this->actingAs($user);
+
+        // 出品処理
+        $response = $this->post('/sell', [
+            'name' => '出品テスト商品',
+            'brand_name' => 'テストブランド',
+            'price' => 5000,
+            'description' => 'テスト商品の説明',
+            'status' => '良好',
+            'category_id' => [$category->id],
+            'image' => \Illuminate\Http\UploadedFile::fake()->image('test.jpg'), // 画像必須
+        ]);
+
+        // リダイレクト確認
+        $response->assertStatus(302);
+
+        // DBに保存されているか確認
+        $this->assertDatabaseHas('items', [
+            'name' => '出品テスト商品',
+            'brand_name' => 'テストブランド',
+            'price' => 5000,
+            'description' => 'テスト商品の説明',
+            'status' => '良好',
+        ]);
+    }
 }
