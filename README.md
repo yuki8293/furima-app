@@ -58,8 +58,22 @@ php artisan migrate --seed
 
 ### ストレージリンク
 
+以下のコマンドを実行してください。
 ```
 php artisan storage:link
+```
+
+※ 権限エラーが出た場合
+
+以下のコマンドを実行してください。
+
+```
+docker-compose exec php bash
+
+chmod -R 777 storage
+chmod -R 777 bootstrap/cache
+chown -R www-data:www-data storage
+chown -R www-data:www-data bootstrap/cache
 ```
 
 ## テスト実行
@@ -67,6 +81,7 @@ php artisan storage:link
 ```
 php artisan test
 ```
+
 ## 使用技術（実行環境）
 
 フレームワーク：Laravel 8.x
